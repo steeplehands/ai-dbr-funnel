@@ -48,23 +48,25 @@ export function LeadFormSection({ onSubmit, submitted }: LeadFormSectionProps) {
   e.preventDefault();
   if (validateForm()) {
     try {
-      // Send to GHL webhook
+      // Send to GHL webhook with form-urlencoded format
+      const formBody = new URLSearchParams({
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        phone: formData.phone,
+      }).toString();
+
       const response = await fetch('https://services.leadconnectorhq.com/hooks/saiPIHsElD7qIIVgrvxR/webhook-trigger/3097fba7-b6ae-4a91-bb56-63f97ce78b91', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: JSON.stringify({
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-          email: formData.email,
-          phone: formData.phone,
-        }),
+        body: formBody,
       });
 
       if (response.ok) {
-        // Call parent onSubmit to show success message
-        onSubmit(formData);
+        // Redirect to Calendly after successful submission
+        window.location.href = 'https://calendly.com/noah-rizo/30min';
       } else {
         console.error('Webhook submission failed');
         // You might want to show an error message to the user here

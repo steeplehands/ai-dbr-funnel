@@ -113,6 +113,14 @@ export function OfferSection() {
             {/* CTA */}
             <div className="text-center">
               <Button
+                onClick={() => alert('Payment integration coming soon')}
+                size="lg"
+                className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-xl px-12 py-7 rounded-full shadow-2xl hover:shadow-orange-500/50 transition-all duration-300 transform hover:scale-105 w-full md:w-auto"
+              >
+                Buy Now
+              </Button>
+              <p className="text-gray-400 text-lg font-medium my-4">OR</p>
+              <Button
                 onClick={() => document.getElementById('lead-form')?.scrollIntoView({ behavior: 'smooth' })}
                 size="lg"
                 className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-xl px-12 py-7 rounded-full shadow-2xl hover:shadow-orange-500/50 transition-all duration-300 transform hover:scale-105 w-full md:w-auto"
