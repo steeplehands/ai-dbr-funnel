@@ -8,12 +8,18 @@ import { OfferSection } from '@/app/components/OfferSection';
 import { LeadFormSection } from '@/app/components/LeadFormSection';
 import { Footer } from '@/app/components/Footer';
 
+const CALENDLY_URL = 'https://calendly.com/noah-rizo/30min';
+
 export default function App() {
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   const handleFormSubmit = (data: { fullName: string; email: string; phone: string }) => {
     console.log('Form submitted:', data);
     setFormSubmitted(true);
+    // Redirect to Calendly after a brief delay to show success state
+    setTimeout(() => {
+      window.open(CALENDLY_URL, '_blank');
+    }, 500);
   };
 
   return (
