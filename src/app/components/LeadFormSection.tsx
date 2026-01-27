@@ -39,12 +39,36 @@ export function LeadFormSection({ onSubmit, submitted }: LeadFormSectionProps) {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (validateForm()) {
-      onSubmit(formData);
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  if (validateForm()) {
+    try {
+      // Send to GHL webhook
+      const response = await fetch('https://services.leadconnectorhq.com/hooks/saiPIHsElD7qIIVgrvxR/webhook-trigger/f584e6fa-d2c0-4bc3-b9b6-0a50fcd1957e', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          fullName: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+        }),
+      });
+
+      if (response.ok) {
+        // Call parent onSubmit to show success message
+        onSubmit(formData);
+      } else {
+        console.error('Webhook submission failed');
+        // You might want to show an error message to the user here
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      // You might want to show an error message to the user here
     }
-  };
+  }
+};
 
   const handleChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
