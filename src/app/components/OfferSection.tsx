@@ -2,7 +2,7 @@ import { Check, Sparkles } from 'lucide-react';
 import { Button } from '@/app/components/ui/button';
 import { useState } from 'react';
 
-const BOOKING_URL = 'https://book.rizo.pro/widget/booking/nmfGp6qIxOC1MrLqp2DT';
+const BOOKING_URL = 'https://calendly.com/noah-rizo/30min';
 
 const features = [
   'Full backend system access (normally $97/month)',

@@ -1,7 +1,7 @@
 import { Button } from '@/app/components/ui/button';
 import { Zap } from 'lucide-react';
 
-const BOOKING_URL = 'https://book.rizo.pro/widget/booking/nmfGp6qIxOC1MrLqp2DT';
+const BOOKING_URL = 'https://calendly.com/noah-rizo/30min';
 
 export function HeroSection() {
   return (
