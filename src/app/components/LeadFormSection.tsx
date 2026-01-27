@@ -44,7 +44,7 @@ export function LeadFormSection({ onSubmit, submitted }: LeadFormSectionProps) {
   if (validateForm()) {
     try {
       // Send to GHL webhook
-      const response = await fetch('https://services.leadconnectorhq.com/hooks/saiPIHsElD7qIIVgrvxR/webhook-trigger/f584e6fa-d2c0-4bc3-b9b6-0a50fcd1957e', {
+      const response = await fetch('https://services.leadconnectorhq.com/hooks/saiPIHsElD7qIIVgrvxR/webhook-trigger/3097fba7-b6ae-4a91-bb56-63f97ce78b91', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
