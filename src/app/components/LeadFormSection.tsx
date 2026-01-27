@@ -5,13 +5,14 @@ import { Input } from '@/app/components/ui/input';
 import { Label } from '@/app/components/ui/label';
 
 interface LeadFormSectionProps {
-  onSubmit: (data: { fullName: string; email: string; phone: string }) => void;
+  onSubmit: (data: { firstName: string; lastName: string; email: string; phone: string }) => void;
   submitted: boolean;
 }
 
 export function LeadFormSection({ onSubmit, submitted }: LeadFormSectionProps) {
   const [formData, setFormData] = useState({
-    fullName: '',
+    firstName: '',
+    lastName: '',
     email: '',
     phone: '',
   });
@@ -21,8 +22,12 @@ export function LeadFormSection({ onSubmit, submitted }: LeadFormSectionProps) {
   const validateForm = () => {
     const newErrors: { [key: string]: string } = {};
 
-    if (!formData.fullName.trim()) {
-      newErrors.fullName = 'Please enter your full name';
+    if (!formData.firstName.trim()) {
+      newErrors.firstName = 'Please enter your first name';
+    }
+
+    if (!formData.lastName.trim()) {
+      newErrors.lastName = 'Please enter your last name';
     }
 
     if (!formData.email.trim()) {
@@ -50,7 +55,8 @@ export function LeadFormSection({ onSubmit, submitted }: LeadFormSectionProps) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          fullName: formData.fullName,
+          firstName: formData.firstName,
+          lastName: formData.lastName,
           email: formData.email,
           phone: formData.phone,
         }),
@@ -135,27 +141,53 @@ export function LeadFormSection({ onSubmit, submitted }: LeadFormSectionProps) {
 
             {/* Form */}
             <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Full Name */}
-              <div>
-                <Label htmlFor="fullName" className="text-white text-base mb-2 block">
-                  Full Name
-                </Label>
-                <div className="relative">
-                  <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                  <Input
-                    id="fullName"
-                    type="text"
-                    placeholder="John Smith"
-                    value={formData.fullName}
-                    onChange={(e) => handleChange('fullName', e.target.value)}
-                    className={`pl-12 h-14 bg-slate-900/50 border-slate-700 text-white placeholder:text-gray-500 focus:border-orange-500 focus:ring-orange-500/20 ${
-                      errors.fullName ? 'border-red-500' : ''
-                    }`}
-                  />
+              {/* Name Fields Row */}
+              <div className="grid grid-cols-2 gap-4">
+                {/* First Name */}
+                <div>
+                  <Label htmlFor="firstName" className="text-white text-base mb-2 block">
+                    First Name
+                  </Label>
+                  <div className="relative">
+                    <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                    <Input
+                      id="firstName"
+                      type="text"
+                      placeholder="First"
+                      value={formData.firstName}
+                      onChange={(e) => handleChange('firstName', e.target.value)}
+                      className={`pl-12 h-14 bg-slate-900/50 border-slate-700 text-white placeholder:text-gray-500 focus:border-orange-500 focus:ring-orange-500/20 ${
+                        errors.firstName ? 'border-red-500' : ''
+                      }`}
+                    />
+                  </div>
+                  {errors.firstName && (
+                    <p className="text-red-400 text-sm mt-1">{errors.firstName}</p>
+                  )}
                 </div>
-                {errors.fullName && (
-                  <p className="text-red-400 text-sm mt-1">{errors.fullName}</p>
-                )}
+
+                {/* Last Name */}
+                <div>
+                  <Label htmlFor="lastName" className="text-white text-base mb-2 block">
+                    Last Name
+                  </Label>
+                  <div className="relative">
+                    <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                    <Input
+                      id="lastName"
+                      type="text"
+                      placeholder="Last"
+                      value={formData.lastName}
+                      onChange={(e) => handleChange('lastName', e.target.value)}
+                      className={`pl-12 h-14 bg-slate-900/50 border-slate-700 text-white placeholder:text-gray-500 focus:border-orange-500 focus:ring-orange-500/20 ${
+                        errors.lastName ? 'border-red-500' : ''
+                      }`}
+                    />
+                  </div>
+                  {errors.lastName && (
+                    <p className="text-red-400 text-sm mt-1">{errors.lastName}</p>
+                  )}
+                </div>
               </div>
 
               {/* Email */}
