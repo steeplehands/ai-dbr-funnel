@@ -1,0 +1,138 @@
+import { Check, Sparkles } from 'lucide-react';
+import { Button } from '@/app/components/ui/button';
+import { useState } from 'react';
+
+const BOOKING_URL = 'https://book.rizo.pro/widget/booking/nmfGp6qIxOC1MrLqp2DT';
+
+const features = [
+  'Full backend system access (normally $97/month)',
+  'One custom workflow built for you every month',
+  'Lead capture & automated follow-ups',
+  'Appointment booking automation',
+  'Email & SMS campaign setup',
+  'CRM setup & optimization',
+  'Custom-trained AI agent aligned to your brand',
+  'Ongoing support & maintenance',
+  'Training on how to use everything',
+];
+
+export function OfferSection() {
+  const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'annual'>('monthly');
+  
+  const monthlyPrice = 89;
+  const annualPrice = Math.round(monthlyPrice * 12 * 0.9); // 10% discount
+  const annualMonthlyPrice = Math.round(annualPrice / 12);
+  
+  return (
+    <section className="px-4 py-20 bg-slate-900/50">
+      <div className="max-w-4xl mx-auto">
+        {/* Pricing card */}
+        <div className="relative">
+          {/* Glow effect */}
+          <div className="absolute -inset-1 bg-gradient-to-r from-orange-500 to-purple-600 rounded-3xl blur-xl opacity-75"></div>
+          
+          <div className="relative bg-gradient-to-br from-slate-800 to-slate-900 border-2 border-orange-500/50 rounded-3xl p-8 md:p-12">
+            {/* Badge */}
+            <div className="flex justify-center mb-6">
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-purple-600 text-white px-4 py-2 rounded-full">
+                <Sparkles className="w-4 h-4" />
+                <span className="text-sm font-semibold">LIMITED TIME OFFER</span>
+              </div>
+            </div>
+
+            {/* Heading */}
+            <h2 className="text-4xl md:text-5xl font-extrabold text-white text-center mb-4">
+              Everything You Need to Scale
+            </h2>
+            <p className="text-xl text-gray-400 text-center mb-8">
+              Stop paying for multiple tools and DIY headaches
+            </p>
+
+            {/* Billing Toggle */}
+            <div className="flex justify-center mb-8">
+              <div className="inline-flex items-center bg-slate-900/80 border border-slate-700 rounded-full p-1">
+                <button
+                  onClick={() => setBillingPeriod('monthly')}
+                  className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
+                    billingPeriod === 'monthly'
+                      ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-white shadow-lg'
+                      : 'text-gray-400 hover:text-white'
+                  }`}
+                >
+                  Monthly
+                </button>
+                <button
+                  onClick={() => setBillingPeriod('annual')}
+                  className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-200 relative ${
+                    billingPeriod === 'annual'
+                      ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-white shadow-lg'
+                      : 'text-gray-400 hover:text-white'
+                  }`}
+                >
+                  Annual
+                  <span className="ml-1 text-xs bg-green-500 text-white px-2 py-0.5 rounded-full">
+                    Save 10%
+                  </span>
+                </button>
+              </div>
+            </div>
+
+            {/* Price */}
+            <div className="text-center mb-8">
+              {billingPeriod === 'monthly' ? (
+                <>
+                  <div className="flex items-baseline justify-center gap-2">
+                    <span className="text-6xl md:text-7xl font-extrabold text-white">${monthlyPrice}</span>
+                    <span className="text-2xl text-gray-400">/month</span>
+                  </div>
+                  <p className="text-gray-500 mt-2">Cancel anytime. No contracts.</p>
+                </>
+              ) : (
+                <>
+                  <div className="flex items-baseline justify-center gap-2">
+                    <span className="text-6xl md:text-7xl font-extrabold text-white">${annualPrice}</span>
+                    <span className="text-2xl text-gray-400">/year</span>
+                  </div>
+                  <p className="text-gray-500 mt-2">
+                    Just ${annualMonthlyPrice}/month • Billed annually
+                  </p>
+                </>
+              )}
+            </div>
+
+            {/* Features list */}
+            <div className="grid md:grid-cols-2 gap-4 mb-10">
+              {features.map((feature, index) => (
+                <div key={index} className="flex items-start gap-3">
+                  <Check className="w-6 h-6 text-orange-500 flex-shrink-0 mt-1" />
+                  <span className="text-gray-300">{feature}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA */}
+            <div className="text-center">
+              <Button
+                onClick={() => window.open(BOOKING_URL, '_blank')}
+                size="lg"
+                className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-xl px-12 py-7 rounded-full shadow-2xl hover:shadow-orange-500/50 transition-all duration-300 transform hover:scale-105 w-full md:w-auto"
+              >
+                Claim Your Free Strategy Call Now
+              </Button>
+              <p className="text-gray-500 text-sm mt-4">
+                🔒 No credit card required • 100% free consultation
+              </p>
+            </div>
+
+            {/* Guarantee */}
+            <div className="mt-8 pt-8 border-t border-slate-700 text-center">
+              <p className="text-gray-400">
+                <span className="font-bold text-white">Satisfaction Guarantee:</span> We are committed to your success. If you are not completely satisfied with our service, let us know and we will make it right.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
