@@ -13,24 +13,24 @@ const flowSteps = [
   },
   {
     icon: Bell,
-    title: 'Coach Is Notified',
-    description: 'You stay informed without inbox chaos',
+    title: 'You Get Notified',
+    description: 'Stay informed without inbox chaos',
   },
   {
     icon: MessageSquare,
-    title: 'Custom AI Agent Follows Up',
-    description: 'Answers questions and handles objections',
-    note: '(No pretending to be human)',
+    title: 'Automated Follow-Up',
+    description: 'Email sequences or optional AI agent',
+    note: '(AI add-on available)',
   },
   {
     icon: Calendar,
-    title: 'Booking or Follow-Up Logic',
-    description: 'Qualified leads book calls automatically',
+    title: 'Booking Happens Automatically',
+    description: 'Qualified leads book calls on your calendar',
   },
   {
     icon: RefreshCw,
-    title: 'Long-Term Nurture & Reactivation',
-    description: 'Old leads are re-engaged later',
+    title: 'Long-Term Nurture',
+    description: 'Old leads are re-engaged over time',
   },
 ];
 
@@ -118,7 +118,7 @@ export function AutomationFlowSection() {
         {/* Caption */}
         <div className="text-center">
           <p className="text-sm text-gray-500 max-w-3xl mx-auto leading-relaxed">
-            This is not a chatbot. It is a structured workflow using automation and custom-trained AI to reduce manual follow-up while protecting your brand.
+            A structured workflow that runs in the background. Optional AI agents available for enhanced follow-up.
           </p>
         </div>
       </div>

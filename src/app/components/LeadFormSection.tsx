@@ -99,13 +99,13 @@ export function LeadFormSection({ onSubmit, submitted }: LeadFormSectionProps) {
               <CheckCircle2 className="w-10 h-10 text-white" />
             </div>
             <h2 className="text-4xl font-extrabold text-white mb-4">
-              You're All Set! 🎉
+              You're All Set!
             </h2>
             <p className="text-xl text-gray-300 mb-6">
-              We'll reach out within 24 hours to schedule your free strategy call.
+              We'll reach out within 24 hours to get your automation system live.
             </p>
             <p className="text-gray-400">
-              Check your email for confirmation details. Can't wait to help you scale your coaching business!
+              Check your email for next steps. Your first workflow is included with signup.
             </p>
           </div>
         </div>
@@ -131,13 +131,13 @@ export function LeadFormSection({ onSubmit, submitted }: LeadFormSectionProps) {
             <div className="text-center mb-8">
               <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-purple-600 text-white px-4 py-2 rounded-full mb-4">
                 <Calendar className="w-4 h-4" />
-                <span className="text-sm font-semibold">FREE STRATEGY CALL</span>
+                <span className="text-sm font-semibold">GET STARTED</span>
               </div>
               <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-3">
-                See What This Would Look Like for Your Business
+                Your Follow-Up System Live in 24 Hours
               </h2>
               <p className="text-lg text-gray-400">
-                Book your free strategy call and discover exactly how to automate your coaching business
+                Get access, your first workflow, and ongoing support included
               </p>
             </div>
 
@@ -244,12 +244,12 @@ export function LeadFormSection({ onSubmit, submitted }: LeadFormSectionProps) {
                 size="lg"
                 className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-lg py-7 rounded-full shadow-2xl hover:shadow-orange-500/50 transition-all duration-300 transform hover:scale-105"
               >
-                Book My Free Strategy Call
+                Get Started Now
               </Button>
 
               {/* Privacy text */}
               <p className="text-gray-500 text-sm text-center">
-                🔒 Your information is 100% secure and will never be shared
+                Your information is 100% secure and will never be shared
               </p>
             </form>
           </div>

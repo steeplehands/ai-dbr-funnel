@@ -21,18 +21,18 @@ export function HeroSection() {
 
         {/* Main headline */}
         <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
-          Stop Wrestling With Tech.
+          Never Chase Leads Again.
           <br />
           <span className="bg-gradient-to-r from-orange-400 to-purple-500 bg-clip-text text-transparent">
-            Start Scaling Your Coaching Business.
+            Follow-Ups Happen Automatically.
           </span>
         </h1>
 
         {/* Subheadline */}
         <p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto">
-          Get GoHighLevel + a done-for-you workflow every month. 
+          Your follow-up automation system live within 24 hours.
           <br className="hidden md:block" />
-          Finally automate your business without the tech headaches.
+          One central system instead of scattered tools.
         </p>
 
         {/* CTA Button */}
@@ -41,14 +41,14 @@ export function HeroSection() {
           size="lg"
           className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-lg px-8 py-6 rounded-full shadow-2xl hover:shadow-orange-500/50 transition-all duration-300 transform hover:scale-105"
         >
-          Book My Free Strategy Call
+          Get Started Now
         </Button>
 
         {/* Trust indicators */}
         <div className="mt-12 flex flex-wrap justify-center gap-8 text-gray-400 text-sm">
           <div className="flex items-center gap-2">
             <Zap className="w-4 h-4 text-orange-500" />
-            <span>No Setup Required</span>
+            <span>Live in 24 Hours</span>
           </div>
           <div className="flex items-center gap-2">
             <Zap className="w-4 h-4 text-orange-500" />
@@ -56,7 +56,7 @@ export function HeroSection() {
           </div>
           <div className="flex items-center gap-2">
             <Zap className="w-4 h-4 text-orange-500" />
-            <span>Done-For-You</span>
+            <span>Full Control</span>
           </div>
         </div>
       </div>

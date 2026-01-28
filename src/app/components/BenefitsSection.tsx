@@ -3,23 +3,23 @@ import { CheckCircle2, Zap, Users, BarChart3 } from 'lucide-react';
 const benefits = [
   {
     icon: CheckCircle2,
-    title: 'Reclaim 15+ Hours Per Week',
-    description: 'Automate lead capture, follow-ups, booking, and client onboarding so you can focus on what you do best.',
+    title: 'Follow-Ups Happen Automatically',
+    description: 'No more forgotten leads or missed opportunities. Every prospect gets followed up with, on time, every time.',
   },
   {
     icon: BarChart3,
-    title: 'Increase Revenue by 30-50%',
-    description: 'Never miss a lead again. Automated follow-ups and nurture sequences turn more prospects into paying clients.',
+    title: 'Get Bookings Without Chasing',
+    description: 'Qualified leads book calls on your calendar automatically. You show up, they show up.',
   },
   {
     icon: Zap,
-    title: 'Zero Tech Headaches',
-    description: 'We build and maintain your workflows for you. No learning curve, no setup stress, no troubleshooting.',
+    title: 'Full Control Over Your System',
+    description: 'Customize, expand, or adjust your workflows anytime. Video tutorials show you how to make changes yourself.',
   },
   {
     icon: Users,
-    title: 'White-Glove Service',
-    description: 'Get a new custom workflow every month, tailored to your business needs. Like having a tech team on demand.',
+    title: 'Support When You Need It',
+    description: 'Guidance and support included. Questions answered. No waiting around.',
   },
 ];
 
@@ -66,22 +66,22 @@ export function BenefitsSection() {
               <div className="w-16 h-16 rounded-full bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center text-2xl font-bold text-white mx-auto mb-4">
                 1
               </div>
-              <h4 className="text-lg font-bold text-white mb-2">Book Your Free Call</h4>
-              <p className="text-gray-400">We will map out your biggest automation opportunities</p>
+              <h4 className="text-lg font-bold text-white mb-2">Sign Up</h4>
+              <p className="text-gray-400">Get instant access to your automation system</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center text-2xl font-bold text-white mx-auto mb-4">
                 2
               </div>
-              <h4 className="text-lg font-bold text-white mb-2">We Build Everything</h4>
-              <p className="text-gray-400">Your GoHighLevel account + first workflow ready in days</p>
+              <h4 className="text-lg font-bold text-white mb-2">Go Live in 24 Hours</h4>
+              <p className="text-gray-400">Your follow-up automation system is built and running</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 rounded-full bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center text-2xl font-bold text-white mx-auto mb-4">
                 3
               </div>
-              <h4 className="text-lg font-bold text-white mb-2">Watch It Work</h4>
-              <p className="text-gray-400">Save time, close more deals, and scale with confidence</p>
+              <h4 className="text-lg font-bold text-white mb-2">Customize and Grow</h4>
+              <p className="text-gray-400">Use tutorials to modify workflows or add more anytime</p>
             </div>
           </div>
         </div>

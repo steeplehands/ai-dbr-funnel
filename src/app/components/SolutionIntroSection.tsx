@@ -13,14 +13,14 @@ export function SolutionIntroSection() {
             <span className="text-orange-400 font-semibold">The Solution</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
-            Done-For-You Automation
+            Automation You Control
             <br />
             <span className="bg-gradient-to-r from-orange-400 to-purple-500 bg-clip-text text-transparent">
-              That Actually Works
+              With Support When You Need It
             </span>
           </h2>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            We handle everything from setup to maintenance. You get the results without touching a single setting.
+            Ongoing access to automation systems we build and support. Customize, expand, or adjust workflows anytime.
           </p>
         </div>
       </div>

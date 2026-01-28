@@ -6,14 +6,14 @@ const MONTHLY_STRIPE_URL = 'https://buy.stripe.com/4gM14o8QlcSM4fR7vofIs02';
 const ANNUAL_STRIPE_URL = 'https://buy.stripe.com/dRmeVefeJ4mgfYzaHAfIs03';
 
 const features = [
-  'Full-featured system access (unlimited)',
-  '1 free Done-For-You workflow included',
+  'Ongoing access to managed automation systems',
+  'One custom workflow included at signup (sign-on bonus)',
+  'Full control to customize, expand, or adjust workflows',
   'Lead capture & automated follow-ups',
   'Email & SMS campaign setup',
-  'Custom-trained AI agent aligned to your brand',
   'CRM setup & optimization',
-  'Ongoing support & maintenance',
-  'Training on how to use everything',
+  'Support and guidance included',
+  'Video tutorials to build and modify workflows yourself',
 ];
 
 export function OfferSection() {
@@ -38,10 +38,10 @@ export function OfferSection() {
 
             {/* Heading */}
             <h2 className="text-4xl md:text-5xl font-extrabold text-white text-center mb-4">
-              Everything You Need to Scale
+              Get Bookings Without Manual Work
             </h2>
             <p className="text-xl text-gray-400 text-center mb-8">
-              Stop paying for multiple tools and DIY headaches
+              One central system instead of scattered tools
             </p>
 
             {/* Billing Toggle */}
@@ -126,21 +126,25 @@ export function OfferSection() {
                 </Button>
               </div>
 
-              <p className="text-gray-500 text-lg font-medium">OR</p>
-
-              {/* Free Strategy Call Button */}
-              <div>
-                <Button
-                  onClick={() => document.getElementById('lead-form')?.scrollIntoView({ behavior: 'smooth' })}
-                  size="lg"
-                  className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-xl px-12 py-7 rounded-full shadow-2xl hover:shadow-orange-500/50 transition-all duration-300 transform hover:scale-105 w-full md:w-auto"
-                >
-                  Claim Your Free Strategy Call Now
-                </Button>
-              </div>
-
               <p className="text-gray-500 text-sm mt-4">
-                🔒 Secure checkout powered by Stripe
+                Includes your first workflow + ongoing support
+              </p>
+            </div>
+
+            {/* AI Agent note */}
+            <div className="mt-6 text-center">
+              <p className="text-gray-400 text-sm">
+                <span className="font-semibold text-white">Custom AI Agent:</span> Available as an add-on for follow-up, lead nurture, or client care. Annual plans include one free custom AI agent.
+              </p>
+              <p className="text-gray-500 text-xs mt-2">
+                SMS and API usage fees apply when AI agents or SMS follow-up are enabled.
+              </p>
+            </div>
+
+            {/* Strategy Call note */}
+            <div className="mt-6 pt-6 border-t border-slate-700 text-center">
+              <p className="text-gray-400 text-sm">
+                Want extra workflows or custom systems? <a href="https://calendly.com/noah-rizo/30min" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:text-orange-300 underline">Book a free strategy call</a> to discuss your needs.
               </p>
             </div>
 
