@@ -1,28 +1,21 @@
 import { Check, Sparkles } from 'lucide-react';
 import { Button } from '@/app/components/ui/button';
-import { useState } from 'react';
 
-const BOOKING_URL = 'https://calendly.com/noah-rizo/30min';
+const MONTHLY_STRIPE_URL = 'https://buy.stripe.com/4gM14o8QlcSM4fR7vofIs02';
+const ANNUAL_STRIPE_URL = 'https://buy.stripe.com/dRmeVefeJ4mgfYzaHAfIs03';
 
 const features = [
-  'Full backend system access (normally $97/month)',
-  'One custom workflow built for you every month',
+  'Full-featured system access (unlimited)',
+  '1 free Done-For-You workflow included',
   'Lead capture & automated follow-ups',
-  'Appointment booking automation',
   'Email & SMS campaign setup',
-  'CRM setup & optimization',
   'Custom-trained AI agent aligned to your brand',
+  'CRM setup & optimization',
   'Ongoing support & maintenance',
   'Training on how to use everything',
 ];
 
 export function OfferSection() {
-  const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'annual'>('monthly');
-  
-  const monthlyPrice = 89;
-  const annualPrice = Math.round(monthlyPrice * 12 * 0.9); // 10% discount
-  const annualMonthlyPrice = Math.round(annualPrice / 12);
-  
   return (
     <section className="px-4 py-20 bg-slate-900/50">
       <div className="max-w-4xl mx-auto">
@@ -30,7 +23,7 @@ export function OfferSection() {
         <div className="relative">
           {/* Glow effect */}
           <div className="absolute -inset-1 bg-gradient-to-r from-orange-500 to-purple-600 rounded-3xl blur-xl opacity-75"></div>
-          
+
           <div className="relative bg-gradient-to-br from-slate-800 to-slate-900 border-2 border-orange-500/50 rounded-3xl p-8 md:p-12">
             {/* Badge */}
             <div className="flex justify-center mb-6">
@@ -48,56 +41,14 @@ export function OfferSection() {
               Stop paying for multiple tools and DIY headaches
             </p>
 
-            {/* Billing Toggle */}
-            <div className="flex justify-center mb-8">
-              <div className="inline-flex items-center bg-slate-900/80 border border-slate-700 rounded-full p-1">
-                <button
-                  onClick={() => setBillingPeriod('monthly')}
-                  className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
-                    billingPeriod === 'monthly'
-                      ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-white shadow-lg'
-                      : 'text-gray-400 hover:text-white'
-                  }`}
-                >
-                  Monthly
-                </button>
-                <button
-                  onClick={() => setBillingPeriod('annual')}
-                  className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-200 relative ${
-                    billingPeriod === 'annual'
-                      ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-white shadow-lg'
-                      : 'text-gray-400 hover:text-white'
-                  }`}
-                >
-                  Annual
-                  <span className="ml-1 text-xs bg-green-500 text-white px-2 py-0.5 rounded-full">
-                    Save 10%
-                  </span>
-                </button>
-              </div>
-            </div>
-
             {/* Price */}
             <div className="text-center mb-8">
-              {billingPeriod === 'monthly' ? (
-                <>
-                  <div className="flex items-baseline justify-center gap-2">
-                    <span className="text-6xl md:text-7xl font-extrabold text-white">${monthlyPrice}</span>
-                    <span className="text-2xl text-gray-400">/month</span>
-                  </div>
-                  <p className="text-gray-500 mt-2">Cancel anytime. No contracts.</p>
-                </>
-              ) : (
-                <>
-                  <div className="flex items-baseline justify-center gap-2">
-                    <span className="text-6xl md:text-7xl font-extrabold text-white">${annualPrice}</span>
-                    <span className="text-2xl text-gray-400">/year</span>
-                  </div>
-                  <p className="text-gray-500 mt-2">
-                    Just ${annualMonthlyPrice}/month • Billed annually
-                  </p>
-                </>
-              )}
+              <div className="flex items-baseline justify-center gap-2">
+                <span className="text-3xl text-gray-500 line-through">$97</span>
+                <span className="text-6xl md:text-7xl font-extrabold text-white">$79</span>
+                <span className="text-2xl text-gray-400">/month</span>
+              </div>
+              <p className="text-gray-500 mt-2">Cancel anytime. No contracts.</p>
             </div>
 
             {/* Features list */}
@@ -110,25 +61,51 @@ export function OfferSection() {
               ))}
             </div>
 
-            {/* CTA */}
-            <div className="text-center">
-              <Button
-                onClick={() => alert('Payment integration coming soon')}
-                size="lg"
-                className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-xl px-12 py-7 rounded-full shadow-2xl hover:shadow-orange-500/50 transition-all duration-300 transform hover:scale-105 w-full md:w-auto"
-              >
-                Buy Now
-              </Button>
-              <p className="text-gray-400 text-lg font-medium my-4">OR</p>
-              <Button
-                onClick={() => document.getElementById('lead-form')?.scrollIntoView({ behavior: 'smooth' })}
-                size="lg"
-                className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-xl px-12 py-7 rounded-full shadow-2xl hover:shadow-orange-500/50 transition-all duration-300 transform hover:scale-105 w-full md:w-auto"
-              >
-                Claim Your Free Strategy Call Now
-              </Button>
+            {/* CTA Buttons */}
+            <div className="text-center space-y-4">
+              {/* Monthly Button */}
+              <div>
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-xl px-12 py-7 rounded-full shadow-2xl hover:shadow-orange-500/50 transition-all duration-300 transform hover:scale-105 w-full md:w-auto"
+                >
+                  <a href={MONTHLY_STRIPE_URL} target="_blank" rel="noopener noreferrer">
+                    Monthly - $79/mo
+                  </a>
+                </Button>
+              </div>
+
+              <p className="text-gray-500 text-lg font-medium">OR</p>
+
+              {/* Annual Button */}
+              <div>
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-xl px-12 py-7 rounded-full shadow-2xl hover:shadow-orange-500/50 transition-all duration-300 transform hover:scale-105 w-full md:w-auto"
+                >
+                  <a href={ANNUAL_STRIPE_URL} target="_blank" rel="noopener noreferrer">
+                    Annual - $853/yr (Save 10%)
+                  </a>
+                </Button>
+              </div>
+
+              <p className="text-gray-500 text-lg font-medium">OR</p>
+
+              {/* Free Strategy Call Button */}
+              <div>
+                <Button
+                  onClick={() => document.getElementById('lead-form')?.scrollIntoView({ behavior: 'smooth' })}
+                  size="lg"
+                  className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-xl px-12 py-7 rounded-full shadow-2xl hover:shadow-orange-500/50 transition-all duration-300 transform hover:scale-105 w-full md:w-auto"
+                >
+                  Claim Your Free Strategy Call Now
+                </Button>
+              </div>
+
               <p className="text-gray-500 text-sm mt-4">
-                🔒 No credit card required • 100% free consultation
+                🔒 Secure checkout powered by Stripe
               </p>
             </div>
 
