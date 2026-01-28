@@ -1,5 +1,6 @@
 import { Check, Sparkles } from 'lucide-react';
 import { Button } from '@/app/components/ui/button';
+import { useState } from 'react';
 
 const MONTHLY_STRIPE_URL = 'https://buy.stripe.com/4gM14o8QlcSM4fR7vofIs02';
 const ANNUAL_STRIPE_URL = 'https://buy.stripe.com/dRmeVefeJ4mgfYzaHAfIs03';
@@ -16,6 +17,8 @@ const features = [
 ];
 
 export function OfferSection() {
+  const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'annual'>('monthly');
+
   return (
     <section className="px-4 py-20 bg-slate-900/50">
       <div className="max-w-4xl mx-auto">
@@ -41,14 +44,57 @@ export function OfferSection() {
               Stop paying for multiple tools and DIY headaches
             </p>
 
+            {/* Billing Toggle */}
+            <div className="flex justify-center mb-8">
+              <div className="inline-flex items-center bg-slate-900/80 border border-slate-700 rounded-full p-1">
+                <button
+                  onClick={() => setBillingPeriod('monthly')}
+                  className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
+                    billingPeriod === 'monthly'
+                      ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-white shadow-lg'
+                      : 'text-gray-400 hover:text-white'
+                  }`}
+                >
+                  Monthly
+                </button>
+                <button
+                  onClick={() => setBillingPeriod('annual')}
+                  className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-200 relative ${
+                    billingPeriod === 'annual'
+                      ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-white shadow-lg'
+                      : 'text-gray-400 hover:text-white'
+                  }`}
+                >
+                  Annual
+                  <span className="ml-1 text-xs bg-green-500 text-white px-2 py-0.5 rounded-full">
+                    Save 10%
+                  </span>
+                </button>
+              </div>
+            </div>
+
             {/* Price */}
             <div className="text-center mb-8">
-              <div className="flex items-baseline justify-center gap-2">
-                <span className="text-3xl text-gray-500 line-through">$97</span>
-                <span className="text-6xl md:text-7xl font-extrabold text-white">$79</span>
-                <span className="text-2xl text-gray-400">/month</span>
-              </div>
-              <p className="text-gray-500 mt-2">Cancel anytime. No contracts.</p>
+              {billingPeriod === 'monthly' ? (
+                <>
+                  <div className="flex items-baseline justify-center gap-2">
+                    <span className="text-3xl text-gray-500 line-through">$97</span>
+                    <span className="text-6xl md:text-7xl font-extrabold text-white">$79</span>
+                    <span className="text-2xl text-gray-400">/month</span>
+                  </div>
+                  <p className="text-gray-500 mt-2">Cancel anytime. No contracts.</p>
+                </>
+              ) : (
+                <>
+                  <div className="flex items-baseline justify-center gap-2">
+                    <span className="text-6xl md:text-7xl font-extrabold text-white">$853</span>
+                    <span className="text-2xl text-gray-400">/year</span>
+                  </div>
+                  <p className="text-gray-500 mt-2">
+                    Just ~$71/month • Billed annually
+                  </p>
+                </>
+              )}
             </div>
 
             {/* Features list */}
@@ -63,30 +109,19 @@ export function OfferSection() {
 
             {/* CTA Buttons */}
             <div className="text-center space-y-4">
-              {/* Monthly Button */}
+              {/* Payment Button - changes based on billing period */}
               <div>
                 <Button
                   asChild
                   size="lg"
                   className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-xl px-12 py-7 rounded-full shadow-2xl hover:shadow-orange-500/50 transition-all duration-300 transform hover:scale-105 w-full md:w-auto"
                 >
-                  <a href={MONTHLY_STRIPE_URL} target="_blank" rel="noopener noreferrer">
-                    Monthly - $79/mo
-                  </a>
-                </Button>
-              </div>
-
-              <p className="text-gray-500 text-lg font-medium">OR</p>
-
-              {/* Annual Button */}
-              <div>
-                <Button
-                  asChild
-                  size="lg"
-                  className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-xl px-12 py-7 rounded-full shadow-2xl hover:shadow-orange-500/50 transition-all duration-300 transform hover:scale-105 w-full md:w-auto"
-                >
-                  <a href={ANNUAL_STRIPE_URL} target="_blank" rel="noopener noreferrer">
-                    Annual - $853/yr (Save 10%)
+                  <a
+                    href={billingPeriod === 'monthly' ? MONTHLY_STRIPE_URL : ANNUAL_STRIPE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {billingPeriod === 'monthly' ? 'Get Started - $79/mo' : 'Get Started - $853/yr'}
                   </a>
                 </Button>
               </div>
