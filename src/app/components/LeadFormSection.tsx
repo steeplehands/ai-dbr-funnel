@@ -134,10 +134,10 @@ export function LeadFormSection({ onSubmit, submitted }: LeadFormSectionProps) {
                 <span className="text-sm font-semibold">GET STARTED</span>
               </div>
               <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-3">
-                Your Follow-Up System Live in 24 Hours
+                Need More? Book a Call.
               </h2>
               <p className="text-lg text-gray-400">
-                Get access, your first workflow, and ongoing support included
+                We'll review your current system and create a plan to streamline your operations.
               </p>
             </div>
 

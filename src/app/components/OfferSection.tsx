@@ -6,12 +6,16 @@ const MONTHLY_STRIPE_URL = 'https://buy.stripe.com/4gM14o8QlcSM4fR7vofIs02';
 const ANNUAL_STRIPE_URL = 'https://buy.stripe.com/dRmeVefeJ4mgfYzaHAfIs03';
 
 const features = [
-  'Ongoing access to managed automation systems',
-  'One custom workflow included at signup (sign-on bonus)',
-  'Full control to customize, expand, or adjust workflows',
+  // Row 1
   'Lead capture & automated follow-ups',
-  'Email & SMS campaign setup',
   'CRM setup & optimization',
+  // Row 2
+  'One custom workflow included at signup',
+  'Ongoing access to managed automation systems',
+  // Row 3
+  'Email & SMS campaign setup',
+  'Full control to customize, expand, or adjust workflows',
+  // Row 4
   'Support and guidance included',
   'Video tutorials to build and modify workflows yourself',
 ];
