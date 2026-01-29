@@ -5,15 +5,18 @@ import { useState } from 'react';
 const BOOKING_URL = 'https://calendly.com/noah-rizo/30min';
 
 const features = [
-  'Full backend system access (normally $97/month)',
-  'One custom workflow built for you every month',
+  // Row 1
   'Lead capture & automated follow-ups',
-  'Appointment booking automation',
-  'Email & SMS campaign setup',
   'CRM setup & optimization',
-  'Custom-trained AI agent aligned to your brand',
-  'Ongoing support & maintenance',
-  'Training on how to use everything',
+  // Row 2
+  'One custom workflow included at signup',
+  'Ongoing access to managed automation systems',
+  // Row 3
+  'Email & SMS campaign setup',
+  'Full control to customize, expand, or adjust workflows',
+  // Row 4
+  'Support and guidance included',
+  'Video tutorials to build and modify workflows yourself',
 ];
 
 export function OfferSection() {

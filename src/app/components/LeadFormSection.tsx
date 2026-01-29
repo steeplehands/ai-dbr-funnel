@@ -132,10 +132,10 @@ export function LeadFormSection({ onSubmit, submitted }: LeadFormSectionProps) {
                 <span className="text-sm font-semibold">FREE STRATEGY CALL</span>
               </div>
               <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-3">
-                See What This Would Look Like for Your Business
+                Need More? Book a Call.
               </h2>
               <p className="text-lg text-gray-400">
-                Book your free strategy call and discover exactly how to automate your coaching business
+                We'll review your current system and create a plan to streamline your operations.
               </p>
             </div>
 
