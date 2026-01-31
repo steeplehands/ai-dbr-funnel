@@ -65,8 +65,10 @@ export function StartPage() {
         billingPeriod: billingPeriod,
       }).toString();
 
+      // Use no-cors mode to avoid CORS issues with third-party webhooks
       await fetch(WEBHOOK_URL, {
         method: 'POST',
+        mode: 'no-cors',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
