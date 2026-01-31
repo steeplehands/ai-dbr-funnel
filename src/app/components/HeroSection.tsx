@@ -37,7 +37,7 @@ export function HeroSection() {
 
         {/* CTA Button */}
         <Button
-          onClick={() => document.getElementById('lead-form')?.scrollIntoView({ behavior: 'smooth' })}
+          onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
           size="lg"
           className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-lg px-8 py-6 rounded-full shadow-2xl hover:shadow-orange-500/50 transition-all duration-300 transform hover:scale-105"
         >

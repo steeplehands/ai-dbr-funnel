@@ -23,7 +23,7 @@ export function OfferSection() {
   const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'annual'>('monthly');
 
   return (
-    <section className="px-4 py-20 bg-slate-900/50">
+    <section id="pricing" className="px-4 py-20 bg-slate-900/50">
       <div className="max-w-4xl mx-auto">
         {/* Pricing card */}
         <div className="relative">
