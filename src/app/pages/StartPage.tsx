@@ -118,7 +118,6 @@ export function StartPage() {
 
           {/* Form Card */}
           <div className="relative mb-10">
-            <div className="absolute -inset-1 bg-gradient-to-r from-orange-500 to-purple-600 rounded-3xl blur-xl opacity-30"></div>
             <div className="relative bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 rounded-3xl p-8 md:p-10">
               {/* Pricing Toggle - Now inside form card at top */}
               <div className="flex justify-center mb-8">
@@ -248,10 +247,12 @@ export function StartPage() {
                     <Briefcase className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                     <Input
                       id="businessNiche"
+                      name="business-niche-field"
                       type="text"
                       placeholder="e.g., Life Coaching, Business Consulting, Fitness Coaching"
                       value={formData.businessNiche}
                       onChange={(e) => handleChange('businessNiche', e.target.value)}
+                      autoComplete="new-password"
                       className={`pl-12 h-12 bg-slate-900/50 border-slate-700 text-white placeholder:text-gray-500 focus:border-orange-500 focus:ring-orange-500/20 ${
                         errors.businessNiche ? 'border-red-500' : ''
                       }`}
@@ -334,28 +335,47 @@ export function StartPage() {
                   </p>
 
                   {/* Stripe Payment Button */}
-                  <div
-                    className={`flex justify-center ${!isFormValid ? 'opacity-50 pointer-events-none' : ''}`}
-                    onClick={handleStripeContainerClick}
-                  >
+                  <div className="flex justify-center">
                     {billingPeriod === 'monthly' ? (
-                      <stripe-buy-button
-                        buy-button-id="buy_btn_1SvM7JK3wlu95dwgV9PXHF8A"
-                        publishable-key="pk_live_51SoGWKK3wlu95dwgXC7UnmpTMr8NB8hp2GyMkYnbUtiia4MEAHrobhp516Y8iG8LCVgMdhX9opl1B9LsT6V4jiTU005T3kiHUH"
-                      />
+                      <a
+                        key="monthly-link"
+                        href="https://buy.stripe.com/4gM14o8QlcSM4fR7vofIs02"
+                        onClick={(e) => {
+                          if (!isFormValid) {
+                            e.preventDefault();
+                            return;
+                          }
+                          submitFormData();
+                        }}
+                        className={`inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 rounded-full shadow-lg hover:shadow-orange-500/50 transition-all duration-300 ${
+                          !isFormValid ? 'opacity-50 cursor-not-allowed' : 'hover:scale-105'
+                        }`}
+                      >
+                        Complete Purchase
+                      </a>
                     ) : (
-                      <stripe-buy-button
-                        buy-button-id="buy_btn_1SvM3KK3wlu95dwg9BRlM79K"
-                        publishable-key="pk_live_51SoGWKK3wlu95dwgXC7UnmpTMr8NB8hp2GyMkYnbUtiia4MEAHrobhp516Y8iG8LCVgMdhX9opl1B9LsT6V4jiTU005T3kiHUH"
-                      />
+                      <a
+                        key="annual-link"
+                        href="https://buy.stripe.com/dRmeVefeJ4mgfYzaHAfIs03"
+                        onClick={(e) => {
+                          if (!isFormValid) {
+                            e.preventDefault();
+                            return;
+                          }
+                          submitFormData();
+                        }}
+                        className={`inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 rounded-full shadow-lg hover:shadow-orange-500/50 transition-all duration-300 ${
+                          !isFormValid ? 'opacity-50 cursor-not-allowed' : 'hover:scale-105'
+                        }`}
+                      >
+                        Complete Purchase
+                      </a>
                     )}
                   </div>
 
-                  {!isFormValid && (
-                    <p className="text-orange-400 text-sm text-center mt-4">
-                      Please fill out all required fields to continue
-                    </p>
-                  )}
+                  <p className={`text-orange-400 text-sm text-center mt-4 h-5 ${isFormValid ? 'invisible' : ''}`}>
+                    Please fill out all required fields to continue
+                  </p>
                 </div>
               </div>
             </div>
