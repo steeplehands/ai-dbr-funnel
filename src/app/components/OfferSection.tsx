@@ -2,7 +2,8 @@ import { Check, Sparkles } from 'lucide-react';
 import { Button } from '@/app/components/ui/button';
 import { useState } from 'react';
 
-const START_URL = 'https://start.rizo.pro';
+// Use query param for now until subdomain DNS is fully configured
+const START_URL = 'https://get.rizo.pro/?page=start';
 
 const features = [
   // Row 1
