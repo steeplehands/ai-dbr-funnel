@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
-import { CheckCircle2, Mail, Settings, Zap, ArrowRight, Calendar } from 'lucide-react';
+import { CheckCircle2, Mail, Settings, Zap, ArrowRight } from 'lucide-react';
 import { Footer } from '@/app/components/Footer';
 
 const nextSteps = [
   {
     icon: Mail,
     title: 'Check Your Email',
-    description: "Within 24 hours, you'll receive an email from leadconnector@... containing:",
+    description: "Within 24 hours, you'll receive an email from LeadConnector containing:",
     items: [
       'Your GoHighLevel login credentials',
       'Access to your automation dashboard',
@@ -21,7 +21,6 @@ const nextSteps = [
       'Create your GoHighLevel sub-account',
       'Configure your custom workflow',
       'Set up your CRM, email, and SMS systems',
-      'Prepare video tutorials for your specific setup',
     ],
   },
   {
@@ -30,7 +29,7 @@ const nextSteps = [
     description: "Once live, you'll have:",
     items: [
       'Full access to customize and expand your workflows',
-      'Ongoing support when you need it',
+      'Ongoing support',
       'The freedom to build additional automations as you grow',
     ],
   },
@@ -129,22 +128,26 @@ export function SuccessPage() {
             <div className="absolute -inset-1 bg-gradient-to-r from-orange-500 to-purple-600 rounded-3xl blur-xl opacity-30"></div>
             <div className="relative bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 rounded-3xl p-8 md:p-10">
               <div className="text-center mb-8">
-                <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500/20 to-purple-600/20 text-orange-400 px-4 py-2 rounded-full mb-4">
-                  <Calendar className="w-4 h-4" />
-                  <span className="text-sm font-semibold">OPTIONAL</span>
-                </div>
                 <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
-                  Want a Guided Walkthrough?
+                  Onboarding Call
                 </h2>
                 <p className="text-gray-400 max-w-2xl mx-auto">
                   Book a 30-minute onboarding call and we'll show you around your new automation system
                 </p>
               </div>
 
+              {/* Pre-call information */}
+              <div className="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-8">
+                <h3 className="text-lg font-semibold text-white mb-3">Before Our Call:</h3>
+                <p className="text-gray-400">
+                  Think about where your coaching business is today and where you want it to be. We'll discuss your current setup, your client acquisition process, and your goals so we can customize your automation system to fit your needs.
+                </p>
+              </div>
+
               {/* Calendly Embed */}
               <div
                 className="calendly-inline-widget rounded-xl overflow-hidden"
-                data-url="https://calendly.com/noah-rizo/30min?hide_gdpr_banner=1&primary_color=FF6B35"
+                data-url="https://calendly.com/noah-rizo/30min?hide_gdpr_banner=1&hide_event_type_details=1&primary_color=FF6B35"
                 style={{ minWidth: '320px', height: '700px' }}
               />
 
@@ -158,8 +161,8 @@ export function SuccessPage() {
           <div className="text-center space-y-4">
             <p className="text-gray-400">
               Have questions? Email us at{' '}
-              <a href="mailto:support@rizo.pro" className="text-orange-400 hover:text-orange-300 underline">
-                support@rizo.pro
+              <a href="mailto:noah@rizo.pro" className="text-orange-400 hover:text-orange-300 underline">
+                noah@rizo.pro
               </a>
             </p>
             <p className="text-gray-500">
