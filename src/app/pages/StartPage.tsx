@@ -50,39 +50,34 @@ export function StartPage() {
     return hasFirstName && hasLastName && hasValidEmail && hasPhone && hasBusinessNiche && hasTimeZone;
   }, [formData]);
 
-  // Submit form data to webhook when Stripe button is about to be clicked
-  const submitFormData = async () => {
-    try {
-      const formBody = new URLSearchParams({
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-        email: formData.email,
-        phone: formData.phone,
-        businessNiche: formData.businessNiche,
-        businessName: formData.businessName || '',
-        website: formData.website || '',
-        timeZone: formData.timeZone,
-        billingPeriod: billingPeriod,
-      }).toString();
+  // Submit form data to webhook using sendBeacon (works during navigation)
+  const submitFormData = () => {
+    const formBody = new URLSearchParams({
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      email: formData.email,
+      phone: formData.phone,
+      businessNiche: formData.businessNiche,
+      businessName: formData.businessName || '',
+      website: formData.website || '',
+      timeZone: formData.timeZone,
+      billingPeriod: billingPeriod,
+    }).toString();
 
-      // Use no-cors mode to avoid CORS issues with third-party webhooks
-      await fetch(WEBHOOK_URL, {
+    // Use sendBeacon for reliable delivery during page navigation
+    // Falls back to fetch if sendBeacon isn't available
+    if (navigator.sendBeacon) {
+      const blob = new Blob([formBody], { type: 'application/x-www-form-urlencoded' });
+      navigator.sendBeacon(WEBHOOK_URL, blob);
+    } else {
+      // Fallback for older browsers
+      fetch(WEBHOOK_URL, {
         method: 'POST',
         mode: 'no-cors',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: formBody,
+        keepalive: true,
       });
-    } catch (error) {
-      console.error('Error submitting form:', error);
-    }
-  };
-
-  // Handle Stripe button container click - submit form first
-  const handleStripeContainerClick = () => {
-    if (isFormValid) {
-      submitFormData();
     }
   };
 
