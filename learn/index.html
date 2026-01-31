@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RIZO Training Portal</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(to bottom, #0f172a, #1e293b, #0f172a);
+      min-height: 100vh;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    /* Password Page Styles */
+    .password-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .password-page::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      left: -200px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(249, 115, 22, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .password-page::after {
+      content: '';
+      position: absolute;
+      bottom: -200px;
+      right: -200px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .password-card {
+      background: rgba(30, 41, 59, 0.8);
+      border: 1px solid rgba(71, 85, 105, 0.5);
+      border-radius: 16px;
+      padding: 48px 40px;
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+      backdrop-filter: blur(10px);
+    }
+
+    .password-card h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      background: linear-gradient(to right, #fb923c, #a855f7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .password-card .subtitle {
+      color: #94a3b8;
+      font-size: 15px;
+      margin-bottom: 32px;
+    }
+
+    .password-input-wrapper {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .password-input {
+      width: 100%;
+      padding: 14px 18px;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(71, 85, 105, 0.5);
+      border-radius: 10px;
+      color: #fff;
+      font-size: 16px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .password-input:focus {
+      outline: none;
+      border-color: #f97316;
+      box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2);
+    }
+
+    .password-input::placeholder {
+      color: #64748b;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 14px 24px;
+      background: linear-gradient(to right, #f97316, #ea580c);
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(249, 115, 22, 0.4);
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(249, 115, 22, 0.5);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    .error-message {
+      color: #f87171;
+      font-size: 14px;
+      margin-top: 16px;
+      display: none;
+    }
+
+    .error-message.show {
+      display: block;
+    }
+
+    .hint-text {
+      color: #64748b;
+      font-size: 13px;
+      margin-top: 24px;
+    }
+
+    /* Training Library Styles */
+    .training-library {
+      display: none;
+      min-height: 100vh;
+    }
+
+    .training-library.show {
+      display: block;
+    }
+
+    .hero-section {
+      padding: 80px 20px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(249, 115, 22, 0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+    }
+
+    .hero-section h1 {
+      font-size: 42px;
+      font-weight: 800;
+      margin-bottom: 16px;
+      background: linear-gradient(to right, #fff, #e2e8f0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-section .subtitle {
+      font-size: 18px;
+      color: #94a3b8;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .video-grid {
+      padding: 40px 20px 80px;
+    }
+
+    .video-grid .container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .video-grid .container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .video-grid .container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .video-card {
+      background: rgba(30, 41, 59, 0.6);
+      border: 1px solid rgba(71, 85, 105, 0.4);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .video-card:hover {
+      border-color: rgba(249, 115, 22, 0.5);
+      transform: translateY(-4px);
+    }
+
+    .video-card-header {
+      padding: 24px;
+      cursor: pointer;
+    }
+
+    .video-card-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+
+    .video-number {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      background: linear-gradient(135deg, #f97316, #a855f7);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .video-info {
+      flex: 1;
+    }
+
+    .video-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #fff;
+    }
+
+    .video-duration {
+      display: inline-block;
+      padding: 4px 10px;
+      background: rgba(168, 85, 247, 0.2);
+      border-radius: 20px;
+      font-size: 12px;
+      color: #c4b5fd;
+      font-weight: 500;
+    }
+
+    .video-description {
+      color: #94a3b8;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .watch-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(to right, #f97316, #ea580c);
+      border: none;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .watch-btn:hover {
+      opacity: 0.9;
+    }
+
+    .watch-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .video-embed {
+      display: none;
+      padding: 0 24px 24px;
+    }
+
+    .video-embed.show {
+      display: block;
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #0f172a;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .video-placeholder {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #64748b;
+      font-size: 14px;
+    }
+
+    .video-placeholder svg {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 12px;
+      opacity: 0.5;
+    }
+
+    /* Help Section */
+    .help-section {
+      padding: 60px 20px;
+      text-align: center;
+      background: rgba(15, 23, 42, 0.5);
+    }
+
+    .help-section h2 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .help-section p {
+      color: #94a3b8;
+      margin-bottom: 24px;
+    }
+
+    .help-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: transparent;
+      border: 2px solid #f97316;
+      border-radius: 10px;
+      color: #f97316;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .help-btn:hover {
+      background: #f97316;
+      color: #fff;
+    }
+
+    /* Footer */
+    .footer {
+      padding: 40px 20px;
+      text-align: center;
+      border-top: 1px solid rgba(71, 85, 105, 0.3);
+    }
+
+    .footer p {
+      color: #64748b;
+      font-size: 14px;
+    }
+
+    .footer a {
+      color: #f97316;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Logout Button */
+    .logout-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 10px 18px;
+      background: rgba(30, 41, 59, 0.8);
+      border: 1px solid rgba(71, 85, 105, 0.5);
+      border-radius: 8px;
+      color: #94a3b8;
+      font-size: 13px;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+      z-index: 100;
+    }
+
+    .logout-btn:hover {
+      border-color: #f97316;
+      color: #fff;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 640px) {
+      .password-card {
+        padding: 36px 24px;
+      }
+
+      .password-card h1 {
+        font-size: 24px;
+      }
+
+      .hero-section {
+        padding: 60px 20px 40px;
+      }
+
+      .hero-section h1 {
+        font-size: 28px;
+      }
+
+      .hero-section .subtitle {
+        font-size: 16px;
+      }
+
+      .video-card-header {
+        padding: 20px;
+      }
+
+      .video-title {
+        font-size: 16px;
+      }
+
+      .video-embed {
+        padding: 0 20px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Password Page -->
+  <div class="password-page" id="passwordPage">
+    <div class="password-card">
+      <h1>RIZO Training Portal</h1>
+      <p class="subtitle">Enter your password to access training videos</p>
+      <form id="passwordForm">
+        <div class="password-input-wrapper">
+          <input
+            type="password"
+            class="password-input"
+            id="passwordInput"
+            placeholder="Enter password"
+            autocomplete="current-password"
+          >
+        </div>
+        <button type="submit" class="submit-btn">Access Training</button>
+        <p class="error-message" id="errorMessage">Incorrect password</p>
+      </form>
+      <p class="hint-text">Password provided in your welcome email</p>
+    </div>
+  </div>
+
+  <!-- Training Library -->
+  <div class="training-library" id="trainingLibrary">
+    <button class="logout-btn" id="logoutBtn">Log Out</button>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container">
+        <h1>Automation Education Library</h1>
+        <p class="subtitle">Master your automation system with these step-by-step tutorials</p>
+      </div>
+    </section>
+
+    <!-- Video Grid -->
+    <section class="video-grid">
+      <div class="container">
+
+        <!-- Video 1 -->
+        <div class="video-card">
+          <div class="video-card-header" onclick="toggleVideo(1)">
+            <div class="video-card-top">
+              <div class="video-number">1</div>
+              <div class="video-info">
+                <h3 class="video-title">Welcome to Your Automation System</h3>
+                <span class="video-duration">2-3 minutes</span>
+              </div>
+            </div>
+            <p class="video-description">Tour of your GoHighLevel dashboard and main features</p>
+          </div>
+          <button class="watch-btn" onclick="toggleVideo(1)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            Watch Video
+          </button>
+          <div class="video-embed" id="video1">
+            <div class="video-wrapper">
+              <div class="video-placeholder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg>
+                <span>Video coming soon</span>
+              </div>
+              <!-- Replace data-video-id with actual YouTube ID -->
+              <!-- <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe> -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Video 2 -->
+        <div class="video-card">
+          <div class="video-card-header" onclick="toggleVideo(2)">
+            <div class="video-card-top">
+              <div class="video-number">2</div>
+              <div class="video-info">
+                <h3 class="video-title">Build Your First Workflow</h3>
+                <span class="video-duration">8-10 minutes</span>
+              </div>
+            </div>
+            <p class="video-description">Create a complete lead capture workflow with webhook trigger and automated welcome email</p>
+          </div>
+          <button class="watch-btn" onclick="toggleVideo(2)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            Watch Video
+          </button>
+          <div class="video-embed" id="video2">
+            <div class="video-wrapper">
+              <div class="video-placeholder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg>
+                <span>Video coming soon</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video 3 -->
+        <div class="video-card">
+          <div class="video-card-header" onclick="toggleVideo(3)">
+            <div class="video-card-top">
+              <div class="video-number">3</div>
+              <div class="video-info">
+                <h3 class="video-title">Tags and Organization</h3>
+                <span class="video-duration">4-5 minutes</span>
+              </div>
+            </div>
+            <p class="video-description">Use tags to segment and organize your contacts for targeted messaging</p>
+          </div>
+          <button class="watch-btn" onclick="toggleVideo(3)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            Watch Video
+          </button>
+          <div class="video-embed" id="video3">
+            <div class="video-wrapper">
+              <div class="video-placeholder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg>
+                <span>Video coming soon</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video 4 -->
+        <div class="video-card">
+          <div class="video-card-header" onclick="toggleVideo(4)">
+            <div class="video-card-top">
+              <div class="video-number">4</div>
+              <div class="video-info">
+                <h3 class="video-title">Sales Pipeline</h3>
+                <span class="video-duration">6-7 minutes</span>
+              </div>
+            </div>
+            <p class="video-description">Build a visual sales pipeline to track leads from first contact to paid client</p>
+          </div>
+          <button class="watch-btn" onclick="toggleVideo(4)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            Watch Video
+          </button>
+          <div class="video-embed" id="video4">
+            <div class="video-wrapper">
+              <div class="video-placeholder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg>
+                <span>Video coming soon</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video 5 -->
+        <div class="video-card">
+          <div class="video-card-header" onclick="toggleVideo(5)">
+            <div class="video-card-top">
+              <div class="video-number">5</div>
+              <div class="video-info">
+                <h3 class="video-title">Send Email and SMS Campaigns</h3>
+                <span class="video-duration">5-6 minutes</span>
+              </div>
+            </div>
+            <p class="video-description">Create and send campaigns to your contact list</p>
+          </div>
+          <button class="watch-btn" onclick="toggleVideo(5)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            Watch Video
+          </button>
+          <div class="video-embed" id="video5">
+            <div class="video-wrapper">
+              <div class="video-placeholder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg>
+                <span>Video coming soon</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video 6 -->
+        <div class="video-card">
+          <div class="video-card-header" onclick="toggleVideo(6)">
+            <div class="video-card-top">
+              <div class="video-number">6</div>
+              <div class="video-info">
+                <h3 class="video-title">Connect Your Form to the Workflow</h3>
+                <span class="video-duration">5-6 minutes</span>
+              </div>
+            </div>
+            <p class="video-description">Connect your website form to GoHighLevel using webhooks</p>
+          </div>
+          <button class="watch-btn" onclick="toggleVideo(6)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            Watch Video
+          </button>
+          <div class="video-embed" id="video6">
+            <div class="video-wrapper">
+              <div class="video-placeholder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg>
+                <span>Video coming soon</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video 7 -->
+        <div class="video-card">
+          <div class="video-card-header" onclick="toggleVideo(7)">
+            <div class="video-card-top">
+              <div class="video-number">7</div>
+              <div class="video-info">
+                <h3 class="video-title">Custom Values and Dynamic Fields</h3>
+                <span class="video-duration">4-5 minutes</span>
+              </div>
+            </div>
+            <p class="video-description">Use personalization to make automated emails feel human</p>
+          </div>
+          <button class="watch-btn" onclick="toggleVideo(7)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            Watch Video
+          </button>
+          <div class="video-embed" id="video7">
+            <div class="video-wrapper">
+              <div class="video-placeholder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg>
+                <span>Video coming soon</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Help Section -->
+    <section class="help-section">
+      <div class="container">
+        <h2>Need Help?</h2>
+        <p>Schedule a call with our team to get personalized support</p>
+        <a href="https://calendly.com/rizoagency" target="_blank" rel="noopener" class="help-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Schedule a Call
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <p>Questions? Email <a href="mailto:noah@rizo.pro">support@rizo.pro</a></p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Password configuration
+    const CORRECT_PASSWORD = 'AutomateNow2026';
+    const STORAGE_KEY = 'rizo_training_auth';
+    const EXPIRY_DAYS = 7;
+
+    // DOM Elements
+    const passwordPage = document.getElementById('passwordPage');
+    const trainingLibrary = document.getElementById('trainingLibrary');
+    const passwordForm = document.getElementById('passwordForm');
+    const passwordInput = document.getElementById('passwordInput');
+    const errorMessage = document.getElementById('errorMessage');
+    const logoutBtn = document.getElementById('logoutBtn');
+
+    // Check if user is already authenticated
+    function checkAuth() {
+      const authData = localStorage.getItem(STORAGE_KEY);
+      if (authData) {
+        try {
+          const { expiry } = JSON.parse(authData);
+          if (new Date().getTime() < expiry) {
+            showTrainingLibrary();
+            return true;
+          } else {
+            localStorage.removeItem(STORAGE_KEY);
+          }
+        } catch (e) {
+          localStorage.removeItem(STORAGE_KEY);
+        }
+      }
+      return false;
+    }
+
+    // Save authentication
+    function saveAuth() {
+      const expiry = new Date().getTime() + (EXPIRY_DAYS * 24 * 60 * 60 * 1000);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ expiry }));
+    }
+
+    // Show training library
+    function showTrainingLibrary() {
+      passwordPage.style.display = 'none';
+      trainingLibrary.classList.add('show');
+    }
+
+    // Show password page
+    function showPasswordPage() {
+      passwordPage.style.display = 'flex';
+      trainingLibrary.classList.remove('show');
+    }
+
+    // Handle form submission
+    passwordForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const enteredPassword = passwordInput.value;
+
+      if (enteredPassword === CORRECT_PASSWORD) {
+        saveAuth();
+        showTrainingLibrary();
+        errorMessage.classList.remove('show');
+      } else {
+        errorMessage.classList.add('show');
+        passwordInput.value = '';
+        passwordInput.focus();
+      }
+    });
+
+    // Handle logout
+    logoutBtn.addEventListener('click', function() {
+      localStorage.removeItem(STORAGE_KEY);
+      showPasswordPage();
+      passwordInput.value = '';
+    });
+
+    // Toggle video embed visibility
+    function toggleVideo(videoNum) {
+      const videoEmbed = document.getElementById('video' + videoNum);
+      const isVisible = videoEmbed.classList.contains('show');
+
+      // Close all other videos
+      document.querySelectorAll('.video-embed').forEach(embed => {
+        embed.classList.remove('show');
+      });
+
+      // Toggle current video
+      if (!isVisible) {
+        videoEmbed.classList.add('show');
+      }
+    }
+
+    // Initialize
+    checkAuth();
+  </script>
+</body>
+</html>
