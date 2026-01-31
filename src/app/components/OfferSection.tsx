@@ -2,8 +2,7 @@ import { Check, Sparkles } from 'lucide-react';
 import { Button } from '@/app/components/ui/button';
 import { useState } from 'react';
 
-const MONTHLY_STRIPE_URL = 'https://buy.stripe.com/4gM14o8QlcSM4fR7vofIs02';
-const ANNUAL_STRIPE_URL = 'https://buy.stripe.com/dRmeVefeJ4mgfYzaHAfIs03';
+const START_URL = 'https://start.rizo.pro';
 
 const features = [
   // Row 1
@@ -113,18 +112,14 @@ export function OfferSection() {
 
             {/* CTA Buttons */}
             <div className="text-center space-y-4">
-              {/* Payment Button - changes based on billing period */}
+              {/* Get Started Button - redirects to onboarding page */}
               <div>
                 <Button
                   asChild
                   size="lg"
                   className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-xl px-12 py-7 rounded-full shadow-2xl hover:shadow-orange-500/50 transition-all duration-300 transform hover:scale-105 w-full md:w-auto"
                 >
-                  <a
-                    href={billingPeriod === 'monthly' ? MONTHLY_STRIPE_URL : ANNUAL_STRIPE_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <a href={START_URL}>
                     {billingPeriod === 'monthly' ? 'Get Started - $79/mo' : 'Get Started - $853/yr'}
                   </a>
                 </Button>
@@ -142,13 +137,6 @@ export function OfferSection() {
               </p>
               <p className="text-gray-500 text-xs mt-2">
                 SMS and API usage fees apply when AI agents or SMS follow-up are enabled.
-              </p>
-            </div>
-
-            {/* Strategy Call note */}
-            <div className="mt-6 pt-6 border-t border-slate-700 text-center">
-              <p className="text-gray-400 text-sm">
-                Want extra workflows or custom systems? <a href="https://calendly.com/noah-rizo/30min" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:text-orange-300 underline">Book a free strategy call</a> to discuss your needs.
               </p>
             </div>
 
