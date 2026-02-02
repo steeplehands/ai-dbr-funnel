@@ -3,23 +3,23 @@ import { CheckCircle2, Zap, Users, BarChart3 } from 'lucide-react';
 const benefits = [
   {
     icon: CheckCircle2,
-    title: 'Follow-Ups Happen Automatically',
-    description: 'No more forgotten leads or missed opportunities. Every prospect gets followed up with, on time, every time.',
+    title: 'Get 10+ Hours Back Every Week',
+    description: 'Stop manually scheduling, following up, and tracking leads. Let automation handle the busywork.',
   },
   {
     icon: BarChart3,
-    title: 'Get Bookings Without Chasing',
-    description: 'Qualified leads book calls on your calendar automatically. You show up, they show up.',
+    title: 'Take On More Clients Without Chaos',
+    description: 'Your system handles the volume. Book more calls without drowning in admin work.',
   },
   {
     icon: Zap,
-    title: 'Full Control Over Your System',
-    description: 'Customize, expand, or adjust your workflows anytime. Video tutorials show you how to make changes yourself.',
+    title: 'Focus on Coaching, Not Scheduling',
+    description: 'Spend your time doing what you\'re great at. The system handles everything else.',
   },
   {
     icon: Users,
-    title: 'Support When You Need It',
-    description: 'Guidance and support included. Questions answered. No waiting around.',
+    title: 'Built for Coaches Who Have Clients',
+    description: 'Not a beginner tool. Built for coaches managing 5+ clients who need systems that actually work.',
   },
 ];
 
@@ -67,21 +67,21 @@ export function BenefitsSection() {
                 1
               </div>
               <h4 className="text-lg font-bold text-white mb-2">Sign Up</h4>
-              <p className="text-gray-400">Get instant access to your automation system</p>
+              <p className="text-gray-400">Tell us about your business and current workflow</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center text-2xl font-bold text-white mx-auto mb-4">
                 2
               </div>
               <h4 className="text-lg font-bold text-white mb-2">Go Live in 24 Hours</h4>
-              <p className="text-gray-400">Your follow-up automation system is built and running</p>
+              <p className="text-gray-400">Your automation system is built and handling leads</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 rounded-full bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center text-2xl font-bold text-white mx-auto mb-4">
                 3
               </div>
-              <h4 className="text-lg font-bold text-white mb-2">Customize and Grow</h4>
-              <p className="text-gray-400">Use tutorials to modify workflows or add more anytime</p>
+              <h4 className="text-lg font-bold text-white mb-2">Scale With Confidence</h4>
+              <p className="text-gray-400">Take on more clients without more admin work</p>
             </div>
           </div>
         </div>

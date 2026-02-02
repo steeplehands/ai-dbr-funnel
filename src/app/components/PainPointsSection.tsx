@@ -3,26 +3,26 @@ import { Clock, TrendingDown, Cpu, AlertCircle } from 'lucide-react';
 const painPoints = [
   {
     icon: Clock,
-    title: 'Drowning in Manual Tasks',
-    description: 'You spend hours every day on repetitive admin work instead of coaching clients and growing your business.',
+    title: 'Hitting Capacity',
+    description: 'You have clients, but you\'re maxed out on time. Admin work is eating into the hours you should spend coaching.',
     color: 'from-red-500 to-orange-500',
   },
   {
     icon: TrendingDown,
-    title: 'Missing Revenue Opportunities',
-    description: 'Leads slip through the cracks, follow-ups get forgotten, and you lose money because there is no system.',
+    title: 'Leads Slipping Through',
+    description: 'You know you\'re losing potential clients because follow-ups get forgotten when you\'re busy with existing clients.',
     color: 'from-orange-500 to-amber-500',
   },
   {
     icon: Cpu,
-    title: 'Tech Overwhelm',
-    description: 'Figuring out automation tools feels like learning a new language. You just want it to work.',
+    title: 'Too Many Tools',
+    description: 'Your calendar, email, CRM, and forms don\'t talk to each other. You\'re the glue holding it all together.',
     color: 'from-purple-500 to-pink-500',
   },
   {
     icon: AlertCircle,
-    title: 'DIY Burnout',
-    description: 'You tried to set it up yourself and got stuck. Now your tech stack is a mess and nothing talks to each other.',
+    title: 'Can\'t Scale',
+    description: 'You want to take on more clients, but you\'re already working nights and weekends just to keep up.',
     color: 'from-pink-500 to-rose-500',
   },
 ];
@@ -34,10 +34,10 @@ export function PainPointsSection() {
         {/* Section header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
-            Sound Familiar?
+            Growing But Overwhelmed?
           </h2>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            You are not alone. Most coaches struggle with these exact problems...
+            You've built something real. Now you need systems to scale without burning out.
           </p>
         </div>
 

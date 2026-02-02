@@ -21,18 +21,18 @@ export function HeroSection() {
 
         {/* Main headline */}
         <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
-          Never Chase Leads Again.
+          Stop Wasting 10 Hours a Week
           <br />
           <span className="bg-gradient-to-r from-orange-400 to-purple-500 bg-clip-text text-transparent">
-            Follow-Ups Happen Automatically.
+            on Admin Work
           </span>
         </h1>
 
         {/* Subheadline */}
         <p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto">
-          Your follow-up automation system live within 24 hours.
+          Automated booking, follow-ups, and client management
           <br className="hidden md:block" />
-          One central system instead of scattered tools.
+          for coaches who are ready to scale.
         </p>
 
         {/* CTA Button */}
@@ -41,7 +41,7 @@ export function HeroSection() {
           size="lg"
           className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-lg px-8 py-6 rounded-full shadow-2xl hover:shadow-orange-500/50 transition-all duration-300 transform hover:scale-105"
         >
-          Get Started Now
+          Get Your Time Back
         </Button>
 
         {/* Trust indicators */}
@@ -52,11 +52,11 @@ export function HeroSection() {
           </div>
           <div className="flex items-center gap-2">
             <Zap className="w-4 h-4 text-orange-500" />
-            <span>Cancel Anytime</span>
+            <span>Built for Busy Coaches</span>
           </div>
           <div className="flex items-center gap-2">
             <Zap className="w-4 h-4 text-orange-500" />
-            <span>Full Control</span>
+            <span>Scale Without Burnout</span>
           </div>
         </div>
       </div>

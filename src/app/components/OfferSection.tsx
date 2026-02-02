@@ -42,10 +42,10 @@ export function OfferSection() {
 
             {/* Heading */}
             <h2 className="text-4xl md:text-5xl font-extrabold text-white text-center mb-4">
-              Get Bookings Without Manual Work
+              Scale Without Hiring an Assistant
             </h2>
             <p className="text-xl text-gray-400 text-center mb-8">
-              One central system instead of scattered tools
+              Handle more clients without more admin work
             </p>
 
             {/* Billing Toggle */}
@@ -127,7 +127,7 @@ export function OfferSection() {
               </div>
 
               <p className="text-gray-500 text-sm mt-4">
-                Includes your first workflow + ongoing support
+                Get your time back + ongoing support included
               </p>
             </div>
 

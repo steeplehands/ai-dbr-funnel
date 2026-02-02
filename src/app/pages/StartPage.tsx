@@ -16,11 +16,12 @@ const timeZones = [
 ];
 
 const features = [
+  'Built for coaches managing 5+ clients who need systems that actually work',
   'Full access to GoHighLevel platform - the #1 automation tool for coaches',
   'One custom workflow built specifically for your coaching business',
   'CRM, Email, SMS, Bookings, and Follow-ups in one central system',
   'Setup completed within 24 hours',
-  'Ongoing support and guidance as you grow',
+  'Ongoing support and guidance as you scale',
   'Video tutorials to help you customize and expand your workflows',
 ];
 
@@ -101,13 +102,13 @@ export function StartPage() {
           {/* Header */}
           <div className="text-center mb-10">
             <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
-              Start Your{' '}
+              Get Your Time Back{' '}
               <span className="bg-gradient-to-r from-orange-400 to-purple-500 bg-clip-text text-transparent">
-                Automation System
+                 - Setup in 24 Hours
               </span>
             </h1>
             <p className="text-xl text-gray-400">
-              Complete your information below to get your automation platform set up within 24 hours
+              Stop manually scheduling calls, sending follow-ups, and tracking leads. We'll automate the busywork so you can focus on coaching.
             </p>
           </div>
 
@@ -379,7 +380,7 @@ export function StartPage() {
           {/* Features Section */}
           <div className="relative mb-10">
             <div className="relative bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/50 rounded-3xl p-8 md:p-10">
-              <h2 className="text-2xl font-bold text-white mb-6">What's Included:</h2>
+              <h2 className="text-2xl font-bold text-white mb-6">Everything You Need to Scale Without the Overwhelm:</h2>
               <div className="space-y-4">
                 {features.map((feature, index) => (
                   <div key={index} className="flex items-start gap-3">
@@ -396,7 +397,8 @@ export function StartPage() {
           {/* Workflow Illustration */}
           <div className="relative mb-10">
             <div className="relative bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/50 rounded-3xl p-8 md:p-10">
-              <h2 className="text-2xl font-bold text-white mb-8 text-center">Your Automation Workflow</h2>
+              <h2 className="text-2xl font-bold text-white mb-2 text-center">Your Automation Workflow</h2>
+              <p className="text-gray-400 text-center mb-8">Handles the repetitive work so you can focus on what you do best</p>
               <div className="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-2">
                 {/* Step 1 */}
                 <div className="flex flex-col items-center text-center">
