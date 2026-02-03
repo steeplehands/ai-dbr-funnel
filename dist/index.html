@@ -1,16 +1,422 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RIZO - Managed Automation for Coaches</title>
-    <meta name="description" content="Get automated lead capture, follow-ups, and bookings set up for your coaching business within 24 hours." />
-    <!-- Stripe Buy Button Script -->
-    <script async src="https://js.stripe.com/v3/buy-button.js"></script>
-    <script type="module" crossorigin src="/assets/index-CPwbioda.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-C8W5APGp.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RIZO - AI Lead Reactivation | Pay Per Conversion</title>
+  <meta name="description" content="Resurrect your dead leads with AI-powered text sequences. Zero upfront fees — you only pay when leads book or buy.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(to bottom, #0f172a, #1e293b, #0f172a);
+      min-height: 100vh;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+    }
+
+    /* ── Hero Section ── */
+    .hero {
+      padding: 100px 20px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(249, 115, 22, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -150px;
+      right: 5%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(to right, #f97316, #a855f7);
+      color: #fff;
+      padding: 8px 18px;
+      border-radius: 9999px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      background: linear-gradient(to right, #fff, #e2e8f0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero h1 .accent {
+      background: linear-gradient(to right, #fb923c, #a855f7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero .subheadline {
+      font-size: 20px;
+      color: #94a3b8;
+      max-width: 620px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      padding: 18px 40px;
+      background: linear-gradient(to right, #f97316, #ea580c);
+      border: none;
+      border-radius: 9999px;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 24px rgba(249, 115, 22, 0.45);
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(249, 115, 22, 0.55);
+    }
+
+    .cta-btn:active {
+      transform: translateY(0);
+    }
+
+    /* ── How It Works ── */
+    .how-it-works {
+      padding: 80px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .how-it-works::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(249, 115, 22, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .section-title {
+      font-size: 36px;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 48px;
+      color: #fff;
+    }
+
+    .steps-wrapper {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.5), rgba(15, 23, 42, 0.5));
+      border: 1px solid rgba(71, 85, 105, 0.4);
+      border-radius: 20px;
+      padding: 48px 40px;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+
+    .step {
+      text-align: center;
+    }
+
+    .step-number {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+      margin: 0 auto 20px;
+    }
+
+    .step:nth-child(1) .step-number {
+      background: linear-gradient(135deg, #f97316, #ea580c);
+    }
+
+    .step:nth-child(2) .step-number {
+      background: linear-gradient(135deg, #a855f7, #7c3aed);
+    }
+
+    .step:nth-child(3) .step-number {
+      background: linear-gradient(135deg, #10b981, #059669);
+    }
+
+    .step h3 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .step p {
+      font-size: 15px;
+      color: #94a3b8;
+      line-height: 1.6;
+    }
+
+    /* ── Social Proof ── */
+    .social-proof {
+      padding: 60px 20px 80px;
+    }
+
+    .proof-list {
+      max-width: 620px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .proof-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.6), rgba(15, 23, 42, 0.6));
+      border: 1px solid rgba(71, 85, 105, 0.35);
+      border-radius: 14px;
+      padding: 20px 24px;
+      transition: border-color 0.3s;
+    }
+
+    .proof-item:hover {
+      border-color: rgba(249, 115, 22, 0.45);
+    }
+
+    .proof-check {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #10b981, #059669);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+
+    .proof-check svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .proof-item span {
+      font-size: 17px;
+      font-weight: 500;
+      color: #e2e8f0;
+      line-height: 1.5;
+    }
+
+    /* ── Bottom CTA ── */
+    .bottom-cta {
+      text-align: center;
+      padding: 0 20px 80px;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      padding: 40px 20px;
+      text-align: center;
+      border-top: 1px solid rgba(71, 85, 105, 0.3);
+    }
+
+    .footer p {
+      color: #64748b;
+      font-size: 14px;
+    }
+
+    .footer a {
+      color: #f97316;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 70px 20px 60px;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .hero .subheadline {
+        font-size: 17px;
+      }
+
+      .cta-btn {
+        padding: 16px 32px;
+        font-size: 16px;
+      }
+
+      .section-title {
+        font-size: 28px;
+        margin-bottom: 32px;
+      }
+
+      .steps-wrapper {
+        padding: 32px 24px;
+      }
+
+      .steps-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .how-it-works {
+        padding: 60px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        Pay-Per-Result AI Outreach
+      </div>
+
+      <h1>
+        Resurrect Your Dead Leads<br>
+        <span class="accent">With AI — Pay Only For Results</span>
+      </h1>
+
+      <p class="subheadline">
+        We text your old leads with personalized AI sequences. You only pay when they book or buy. Zero upfront fees.
+      </p>
+
+      <a href="https://start-reactivation.rizo.pro" class="cta-btn">
+        Start Your Free Test Campaign
+      </a>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how-it-works">
+    <div class="container">
+      <h2 class="section-title">How It Works</h2>
+
+      <div class="steps-wrapper">
+        <div class="steps-grid">
+          <div class="step">
+            <div class="step-number">1</div>
+            <h3>Strategy Call</h3>
+            <p>We discuss your offer and dial in the campaign messaging together.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <h3>100 Free Messages</h3>
+            <p>We prove ROI with your dead leads — you just cover API/SMS costs after that.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <h3>Pay Per Conversion</h3>
+            <p>Only pay when leads book appointments or make purchases. Simple as that.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Proof -->
+  <section class="social-proof">
+    <div class="container">
+      <div class="proof-list">
+        <div class="proof-item">
+          <div class="proof-check">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <span>No setup fees, no monthly retainers</span>
+        </div>
+        <div class="proof-item">
+          <div class="proof-check">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <span>You own the campaign — full transparency</span>
+        </div>
+        <div class="proof-item">
+          <div class="proof-check">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <span>Works for any business with a sales pipeline</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section class="bottom-cta">
+    <a href="https://start-reactivation.rizo.pro" class="cta-btn">
+      Start Your Free Test Campaign
+    </a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 RIZO &nbsp;·&nbsp; <a href="mailto:noah@rizo.pro">Contact</a></p>
+    </div>
+  </footer>
+
+</body>
 </html>
