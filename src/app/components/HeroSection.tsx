@@ -48,7 +48,7 @@ export function HeroSection() {
         <div className="mt-12 flex flex-wrap justify-center gap-8 text-gray-400 text-sm">
           <div className="flex items-center gap-2">
             <Zap className="w-4 h-4 text-orange-500" />
-            <span>Live in 24 Hours</span>
+            <span>Live in 72 Hours</span>
           </div>
           <div className="flex items-center gap-2">
             <Zap className="w-4 h-4 text-orange-500" />
